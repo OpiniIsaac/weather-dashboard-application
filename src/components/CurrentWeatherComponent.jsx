@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { grey } from '@mui/material/colors';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import { Grain, Air } from '@mui/icons-material';
 import { fetchWeatherData } from '../service/fetchWeather';
+import SearchComponent from './Search';
+import StyledSearchIconWrapperComponent from './SearchIconWrapper';
 
 
-export default function WeatherPage() {
+export default function CurrentWeatherComponent() {
   const [searchInput, setSearchInput] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState({
+    main: {
+       temp: 'N/A', 
+       humidity: 'N/A', 
+    },
+    wind: {
+       speed: 'N/A', 
+    },
+   });
   const color = grey[500];
 
   const handleSearch = async () => {
@@ -19,22 +29,20 @@ export default function WeatherPage() {
       const data = await fetchWeatherData(searchInput);
       if (data) {
         setWeatherData(data);
-        console.log(data)
-      } else {
-        // Handle error or display a message for invalid input
+        
       }
     } catch (error) {
       console.error('Error fetching weather data:', error);
-      // Handle error
+      
     }
   };
 
   return (
     <div style={{ padding: 20 }}>
-      <Search color={color}>
-        <SearchIconWrapper>
+      <SearchComponent color={color}>
+        <StyledSearchIconWrapperComponent>
           <SearchIcon />
-        </SearchIconWrapper>
+        </StyledSearchIconWrapperComponent>
         <StyledInputBase
           placeholder="Search city..."
           inputProps={{ 'aria-label': 'search' }}
@@ -46,7 +54,7 @@ export default function WeatherPage() {
             }
           }}
         />
-      </Search>
+      </SearchComponent>
 
       {weatherData && (
         <Card variant="outlined" sx={{ maxWidth: 300, marginTop: 20 }}>
@@ -73,31 +81,9 @@ export default function WeatherPage() {
   );
 }
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+
+// 
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',

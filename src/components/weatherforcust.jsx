@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { Grain, Air } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
