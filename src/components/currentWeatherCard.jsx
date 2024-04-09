@@ -1,6 +1,7 @@
-
+import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { WiThermometer, WiHumidity, WiStrongWind } from 'react-icons/wi';
+import {DeviceThermostatIcon, Grain, Air } from '@mui/icons-material';
+
 
 const CurrentWeather = ({ temperature, humidity, windSpeed }) => {
   return (
@@ -10,15 +11,15 @@ const CurrentWeather = ({ temperature, humidity, windSpeed }) => {
           Current Weather
         </Typography>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
-          <WiThermometer size={24} style={{ marginRight: 10 }} />
+          <DeviceThermostatIcon fontSize="small" sx={{ marginRight: 1 }} />
           <Typography variant="body1">Temperature: {temperature} °C</Typography>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
-          <WiHumidity size={24} style={{ marginRight: 10 }} />
+          <Grain fontSize="small" sx={{ marginRight: 1 }} />
           <Typography variant="body1">Humidity: {humidity}%</Typography>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <WiStrongWind size={24} style={{ marginRight: 10 }} />
+          <Air fontSize="small" sx={{ marginRight: 1 }} />
           <Typography variant="body1">Wind Speed: {windSpeed} m/s</Typography>
         </div>
       </CardContent>
