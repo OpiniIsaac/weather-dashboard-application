@@ -21,8 +21,8 @@ export default function CurrentWeatherComponent() {
       speed: 'N/A',
     },
  });
- const color = '#FFFFFF'; // Modern authentic color
-
+ const color = '#FFFFFF'; 
+// function to get weather search by city 
  const handleSearch = async () => {
     try {
       const data = await fetchWeatherData(searchInput);
@@ -36,6 +36,7 @@ export default function CurrentWeatherComponent() {
 
  return (
     <Box sx={{ padding: 2, maxWidth: 600, margin: 'auto' }}>
+    {/* search far for searching the city */}
       <SearchComponent color={color}>
         <StyledSearchIconWrapperComponent>
           <SearchIcon style={{ animation: searchInput ? 'rotate 2s linear infinite' : 'none' }} />

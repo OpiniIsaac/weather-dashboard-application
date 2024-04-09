@@ -6,18 +6,20 @@ import GrainIcon from '@mui/icons-material/Grain';
 import AirIcon from '@mui/icons-material/Air';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  boxShadow: theme.shadows[3],
-  marginRight: theme.spacing(2),
-  flexShrink: 0,
-  minWidth: 200,
-  '&:hover': {
+ backgroundColor: theme.palette.background.default,
+ boxShadow: theme.shadows[3],
+ marginRight: theme.spacing(2),
+ flexShrink: 0,
+ minWidth: 200,
+ '&:hover': {
     boxShadow: theme.shadows[8],
-  },
+    transform: 'scale(1.05) translateY(-2.5%)', // Adjust translateY as needed
+ },
+ transition: 'transform 0.3s ease-in-out',
 }));
 
 const WeatherForecastCard = ({ day }) => {
-  return (
+ return (
     <StyledCard variant="outlined">
       <CardContent>
         <Typography variant="subtitle1" gutterBottom>
@@ -37,16 +39,16 @@ const WeatherForecastCard = ({ day }) => {
         </Box>
       </CardContent>
     </StyledCard>
-  );
+ );
 };
 
 WeatherForecastCard.propTypes = {
-  day: PropTypes.shape({
+ day: PropTypes.shape({
     date: PropTypes.string.isRequired,
     temperature: PropTypes.number.isRequired,
     humidity: PropTypes.number.isRequired,
     windSpeed: PropTypes.number.isRequired,
-  }).isRequired,
+ }).isRequired,
 };
 
 export default WeatherForecastCard;

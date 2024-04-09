@@ -1,4 +1,3 @@
-// weatherService.js
 
 // Function to fetch weather data for a specific city
 async function fetchWeatherData(cityName) {

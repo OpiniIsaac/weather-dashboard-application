@@ -1,10 +1,10 @@
-
 import { Typography, Box } from '@mui/material';
 import WeatherForecastCard from './WeatherForecastCard';
 import PropTypes from 'prop-types';
+
 const WeatherForecast = ({ forecastData }) => {
  return (
-    <div>
+    <div style={{ height: '50vh' }}>
       <Typography variant="h4" gutterBottom>
         Weather Forecast for 5 Days
       </Typography>
@@ -18,14 +18,14 @@ const WeatherForecast = ({ forecastData }) => {
 };
 
 WeatherForecast.propTypes = {
-  forecastData: PropTypes.arrayOf(
+ forecastData: PropTypes.arrayOf(
      PropTypes.shape({
        date: PropTypes.string.isRequired,
        temperature: PropTypes.string.isRequired,
        humidity: PropTypes.string.isRequired,
        windSpeed: PropTypes.string.isRequired,
      })
-  ).isRequired,
- };
+ ).isRequired,
+};
 
 export default WeatherForecast;
