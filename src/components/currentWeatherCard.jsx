@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import {DeviceThermostatIcon, Grain, Air } from '@mui/icons-material';
-
+import { Grain, Air } from '@mui/icons-material';
+import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 
 const CurrentWeather = ({ temperature, humidity, windSpeed }) => {
   return (
