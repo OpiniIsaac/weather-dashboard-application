@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import GrainIcon from '@mui/icons-material/Grain';
@@ -25,5 +25,14 @@ const WeatherForecastCard = ({ day }) => {
     </Card>
  );
 };
+
+WeatherForecastCard.propTypes = {
+    day: PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      temperature: PropTypes.number.isRequired,
+      humidity: PropTypes.number.isRequired,
+      windSpeed: PropTypes.number.isRequired,
+    }).isRequired,
+   };
 
 export default WeatherForecastCard;

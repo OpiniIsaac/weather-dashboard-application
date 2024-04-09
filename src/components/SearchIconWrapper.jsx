@@ -8,7 +8,7 @@ const StyledSearchIconWrapperComponent = styled('div')(({ theme }) => ({
  display: 'flex',
  alignItems: 'center',
  justifyContent: 'center',
- // Add a subtle color to the icon for better visibility
+ 
  color: alpha(theme.palette.text.primary, 0.7),
 }));
 
