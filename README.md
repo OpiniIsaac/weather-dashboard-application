@@ -1,4 +1,4 @@
-*Weather Dashboard*
+# Weather Dashboard
     
 This project is a web dashboard that allows users to search for weather conditions in different cities. It's built using React and Vite, providing a fast development environment for modern web applications.
 
