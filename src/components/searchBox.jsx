@@ -4,8 +4,12 @@ import InputBase from '@mui/material/InputBase';
 import {grey} from '@mui/material/colors';
 
 import SearchIcon from '@mui/icons-material/Search';
+
+import { useState } from 'react';
 export default function SearchBox() {
     const color = grey[500];
+    
+ 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -45,7 +49,15 @@ export default function SearchBox() {
           },
         },
       }));
-      
+      const [searchInput, setSearchInput] = useState('');
+
+      const handleSearch = async (event) => {
+         event.preventDefault();
+         if (searchInput) {
+           const weatherData = await fetchWeatherData(searchInput);
+           onSearch(weatherData);
+         }
+      };
       
   return (
     <>
@@ -56,8 +68,9 @@ export default function SearchBox() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              
-
+              value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+             
             />
           </Search>
 

@@ -3,9 +3,18 @@ import CurrentWeather from '../components/currentWeatherCard'
 import SearchBox from '../components/searchBox'
 
 import WeatherForecast from '../components/weatherforcust';
+import WeatherPage from '../components/weatherPage';
+
 
 
 export default function HomePage() {
+
+  
+ 
+
+ 
+
+ 
   const dummyForecastData = [
     { date: 'April 10, 2024', temperature: 20, humidity: 60, windSpeed: 5 },
     { date: 'April 11, 2024', temperature: 22, humidity: 65, windSpeed: 6 },
@@ -16,8 +25,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <SearchBox />
-      <CurrentWeather humidity="100" temperature="3000" windSpeed="200"/>
+      <WeatherPage/>
       <WeatherForecast forecastData={dummyForecastData} />
      
     </div>
