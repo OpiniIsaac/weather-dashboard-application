@@ -1,6 +1,6 @@
 import CurrentWeatherComponent from "../components/CurrentWeatherComponent";
 
-import WeatherForecast from "../components/weatherforcust";
+import WeatherForecast from "../components/WeatherForecast";
 
 export default function HomePage() {
   const dummyForecastData = [

@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -38,7 +38,7 @@ export default function CurrentWeatherComponent() {
     <Box sx={{ padding: 2, maxWidth: 600, margin: 'auto' }}>
       <SearchComponent color={color}>
         <StyledSearchIconWrapperComponent>
-          <SearchIcon />
+          <SearchIcon style={{ animation: searchInput ? 'rotate 2s linear infinite' : 'none' }} />
         </StyledSearchIconWrapperComponent>
         <StyledInputBase
           placeholder="Search city..."
@@ -54,7 +54,7 @@ export default function CurrentWeatherComponent() {
       </SearchComponent>
 
       {weatherData && (
-        <Card variant="outlined" sx={{ maxWidth: 300, marginTop: 2, backgroundColor: '#F0F2F5' }}>
+        <StyledCard variant="outlined" sx={{ maxWidth: 300, marginTop: 2, backgroundColor: '#F0F2F5', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', borderRadius: '8px' }}>
           <CardContent>
             <Typography variant="h6" gutterBottom sx={{ color: '#333333' }}>
               Current Weather in {searchInput}
@@ -72,7 +72,7 @@ export default function CurrentWeatherComponent() {
               <Typography variant="body1" sx={{ color: '#333333' }}>Wind Speed: {weatherData.wind.speed} m/s</Typography>
             </Box>
           </CardContent>
-        </Card>
+        </StyledCard>
       )}
     </Box>
  );
@@ -88,5 +88,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+    '&:focus': {
+      borderColor: theme.palette.primary.main,
+      boxShadow: `0 0 0 0.2rem ${theme.palette.primary.light}`,
+    },
  },
 }));
+
+const StyledCard = styled(Card)(({ theme }) => ({
+ transition: theme.transitions.create('box-shadow', {
+    duration: theme.transitions.duration.shorter,
+ }),
+ '&:hover': {
+    boxShadow: theme.shadows[10],
+ },
+}));
+
+
+

@@ -1,14 +1,28 @@
 import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import GrainIcon from '@mui/icons-material/Grain';
 import AirIcon from '@mui/icons-material/Air';
 
+const StyledCard = styled(Card)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  boxShadow: theme.shadows[3],
+  marginRight: theme.spacing(2),
+  flexShrink: 0,
+  minWidth: 200,
+  '&:hover': {
+    boxShadow: theme.shadows[8],
+  },
+}));
+
 const WeatherForecastCard = ({ day }) => {
- return (
-    <Card variant="outlined" sx={{ marginRight: 2, flexShrink: 0 }}>
+  return (
+    <StyledCard variant="outlined">
       <CardContent>
-        <Typography variant="subtitle1">{day.date}</Typography>
+        <Typography variant="subtitle1" gutterBottom>
+          {day.date}
+        </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 1 }}>
           <DeviceThermostatIcon fontSize="small" sx={{ marginRight: 1 }} />
           <Typography variant="body2">Temperature: {day.temperature} °C</Typography>
@@ -22,17 +36,17 @@ const WeatherForecastCard = ({ day }) => {
           <Typography variant="body2">Wind Speed: {day.windSpeed} m/s</Typography>
         </Box>
       </CardContent>
-    </Card>
- );
+    </StyledCard>
+  );
 };
 
 WeatherForecastCard.propTypes = {
-    day: PropTypes.shape({
-      date: PropTypes.string.isRequired,
-      temperature: PropTypes.number.isRequired,
-      humidity: PropTypes.number.isRequired,
-      windSpeed: PropTypes.number.isRequired,
-    }).isRequired,
-   };
+  day: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    temperature: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    windSpeed: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default WeatherForecastCard;
