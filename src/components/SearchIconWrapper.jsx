@@ -1,5 +1,4 @@
-import React from 'react';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 
 const StyledSearchIconWrapperComponent = styled('div')(({ theme }) => ({
  padding: theme.spacing(0, 2),
@@ -9,10 +8,12 @@ const StyledSearchIconWrapperComponent = styled('div')(({ theme }) => ({
  display: 'flex',
  alignItems: 'center',
  justifyContent: 'center',
+ // Add a subtle color to the icon for better visibility
+ color: alpha(theme.palette.text.primary, 0.7),
 }));
 
 const SearchIconWrapper = ({ children }) => {
  return <StyledSearchIconWrapperComponent>{children}</StyledSearchIconWrapperComponent>;
 };
 
-export default StyledSearchIconWrapperComponent;
+export default SearchIconWrapper;
